@@ -4,3 +4,4 @@
 # Version notes
 #  0.1 initial commit, no functions
 
+print("hello world")
