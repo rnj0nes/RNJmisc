@@ -7,8 +7,8 @@ Rich Jones' miscellaneous stuff
 
 ## wftree.r
 Creates a workflow folder directory structure following the 
-IFAR/QSP interpretation of JS Long's The Workflow of
-Data Analysis using Stata (2008).
+IFAR/QSP interpretation of JS Long's [The Workflow of
+Data Analysis using Stata (2008).](http://www.indiana.edu/~jslsoc/web_workflow/wf_home.htm)
 
 The code below sets up a set of workflow folders in the
 current working directory. Note: since it is the
