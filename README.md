@@ -3,7 +3,7 @@ RNJmisc
 
 Rich Jones' miscellaneous stuff
 
-# ci.corr
+# ci.corr.R
 Function to compute confidence interval on correlation coefficient using Fisher's z transformation
 
 ```
