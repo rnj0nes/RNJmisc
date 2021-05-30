@@ -12,7 +12,11 @@ ci.corr(.5, n=120, digits=2)
 ```
 
 # Dstar.R
-Get the optimal value for D to convert between logit and probit regression parameters. Solved as the ratio of heights of probability density functions under normal and logistic at a specific value for p (the probability of an indicated response).
+Get the optimal value for D to convert between logit and probit regression parameters. Solved as the 
+ratio of heights of probability density functions under normal and logistic at a specific value 
+for p (the probability of an indicated response). I suggest using the overall marginal value for p.
+In the example below, p is .3. This could mean that overall 30% of the sample make an error on 
+a test item, and one wants a value for $D$ to convert from probit to logit coefficients. 
 
 ```
 Dstar(.3)
