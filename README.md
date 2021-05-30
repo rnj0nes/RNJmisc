@@ -34,6 +34,23 @@ Note, however, that the ess calculation only addresses non-independence of
 one variable for the correlation, so the minimum detectable correlation
 is anti-conservative.
 
+# vDd.r
+Provides a verbal descriptor on the size of a standardized mean difference effect
+size. Loosely following
+what Cohen (1988; Statistical power analysis for the behavioral sciences. Hillsdale, 
+New Jersey: Lawrence Erlbaum Associates.) suggested.
+|r|descriptor|r|descriptor|
+|--|--|--|--|
+|<0.2|trivial|[0.2,0.25)|small|
+|[0.25,0.45)|small-to-medium|[0.45,0.55)|about a medium|
+|[0.55,0.75)|medium-to-large|[0.75,0.85)|about a large|
+|>=0.85|large|||
+
+```
+d <- .3
+vDd(d)
+```
+
 # vDR.r
 Provides a verbal descriptor on the size of a correlation coefficient. Loosely following
 what Cohen (1988; Statistical power analysis for the behavioral sciences. Hillsdale, 
