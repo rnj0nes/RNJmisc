@@ -34,6 +34,22 @@ Note, however, that the ess calculation only addresses non-independence of
 one variable for the correlation, so the minimum detectable correlation
 is anti-conservative.
 
+# vDR.r
+Provides a verbal descriptor on the size of a correlation coefficient. Loosely following
+what Cohen (1988; Statistical power analysis for the behavioral sciences. Hillsdale, 
+New Jersey: Lawrence Erlbaum Associates.) suggested.
+|r|descriptor|r|descriptor|
+|--|--|--|--|
+|<.1|trivial|[.1,1.2)|small|
+|[1.2,.28)|small-to-medium|[.28,.32)|about a medium|
+|[.32,.48)|medium-to-large|[.48,52)|about a large|
+|>=.52|large|||
+
+```
+r <- .3
+vDR(r)
+```
+
 
 
 
