@@ -41,7 +41,7 @@ New Jersey: Lawrence Erlbaum Associates.) suggested.
 |r|descriptor|r|descriptor|
 |--|--|--|--|
 |<.1|trivial|[.1,.12)|small|
-|[1.2,.28)|small-to-medium|[.28,.32)|about a medium|
+|[.12,.28)|small-to-medium|[.28,.32)|about a medium|
 |[.32,.48)|medium-to-large|[.48,52)|about a large|
 |>=.52|large|||
 
