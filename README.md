@@ -34,6 +34,15 @@ Note, however, that the ess calculation only addresses non-independence of
 one variable for the correlation, so the minimum detectable correlation
 is anti-conservative.
 
+# function_scoreit.r
+Defines a function scoreit that computes the sum of a set of indicators,
+uses predictive mean matching in the case of missing items, reports alpha
+and item-rest correlations. see function_itemrest.r
+
+# function_itemrest.r
+Computes item-sum of remainder of variables in a data frame correlations.
+Used by scoreit funciton (see function_scoreit.r)
+
 # vDd.r
 Provides a verbal descriptor on the size of a standardized mean difference effect
 size. Loosely following
