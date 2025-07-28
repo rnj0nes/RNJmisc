@@ -18,11 +18,8 @@ Computes the optimal scaling factor `D` for converting probit regression coeffic
 ### `es.neteffect()`
 Estimates the net effect of a treatment in the presence of confounding, using potential outcomes logic.
 
-### `esi()`
-Main function to compute standardized effect size indices for mean differences, proportions, and correlations.
-
 ### `esi.descriptor()`
-Returns a text description (e.g., "small", "medium") based on effect size magnitude.
+Returns a text description (e.g., "small", "medium") based on Cohen's d effect size magnitude.
 
 ### `esi.p()`
 Computes the p-value for a given effect size and standard error.
@@ -36,23 +33,17 @@ Calculates effective sample size given ICC, number of clusters, and size per clu
 ### `extractEigenvalues()`
 Extracts and returns eigenvalues from a matrix, with optional trimming of small values.
 
-### `function_itemrest()`
-Computes item-rest correlations across variables in a data frame.
-
-### `function_scoreit()`
-Scores a set of items using sum or predictive mean matching; reports alpha and item-rest correlations.
-
-### `function_svalues()`
-Computes signed residuals ("s-values") for each item in a scale, based on deviation from the total score.
-
 ### `hist_discrete()`
 Generates histograms for discrete (integer-valued) variables, with cleaner axis formatting.
 
 ### `include()`
-Sources all `.r` or `.R` files in a given directory into the global environment.
+Source and r file and replays log to console
+
+### `itemrest()`
+Computes item-rest correlations across variables in a data frame.
 
 ### `itemsummary()`
-Generates summary statistics for item-level variables in a test or scale (mean, sd, alpha-if-dropped, etc.).
+Frequency table of item resopnses 
 
 ### `Lehr_repeated()`
 Computes sample size requirements for repeated-measures designs using Lehr’s formula.
@@ -64,19 +55,25 @@ Computes effective sample size using design-based correction for survey weights.
 Computes pooled standard deviation across two groups.
 
 ### `pvf()`
-Computes the probability of validation failure (i.e., probability that validation estimate is below a threshold given training effect).
+Formats P-values
+
+### `scoreit()`
+Scores a set of items using sum or predictive mean matching; reports alpha and item-rest correlations.
 
 ### `showme()`
-Prints variable names and labels for selected variables in a data frame.
+Replays a text file to the console (like Mplus output, for example)
 
 ### `showme.section()`  
-Prints sections of variable metadata with headers and formatting (variant of `showme()`).
+Replays sections of a text file to the console (like Mplus output, for example)
 
 ### `showme.section.lines()`  
-Like `showme.section()` but controls number of lines printed per section.
+Replays sections of a text file to the console (like Mplus output, for example)
 
 ### `source_https()`
 Sources one or more `.R` scripts from HTTPS URLs, bypassing SSL verification if necessary.
+
+### `svalues()`
+Extracts starting values from Mplus output 
 
 ### `tab1()`
 One-way table summary with frequencies and proportions, for a labeled variable.
