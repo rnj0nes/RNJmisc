@@ -4,7 +4,7 @@
 # How large is that correlation?
 # verbal descriptor on a correlation coefficient
 # -----------------------------------------------
-vDR <- function(r){
+vDr <- function(r){
   r.is <- abs(r)
   if (r.is<.1) { 
     descriptor <- "trivial" 

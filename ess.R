@@ -11,6 +11,7 @@
 # that is, the sample size needed for individual 
 # randomization to have the same power and precision
 # as the cluster randomized trial. 
+
 ess <- function(m,k,r) {
   # m is number of observations per cluster (i.e., 
   #    repeated observations on a patient)
@@ -21,6 +22,7 @@ ess <- function(m,k,r) {
   effective_sample_size <- (m*k)/design_effect
   c(design_effect, effective_sample_size)
 }
+
 # checks out confirmed from
 # https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/clustered-data
 # ess(25,4,.017)
@@ -42,9 +44,9 @@ ess <- function(m,k,r) {
 # Assume 80 patients (k)
 # with 21 repeated observations (m)
 # and an ICC of 0.5
-result_ess <- ess(21,80,.5)
-result_ess
-minR <- tanh(sqrt(8/result_ess[2]))
-minR
+# result_ess <- ess(21,80,.5)
+# result_ess
+# minR <- tanh(sqrt(8/result_ess[2]))
+# minR
 
 

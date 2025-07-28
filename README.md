@@ -3,80 +3,103 @@ RNJmisc
 
 Rich Jones' miscellaneous stuff
 
-# ci.corr.R
-Function to compute confidence interval on correlation coefficient using Fisher's z transformation
+# RNJmisc
 
-```
-ci.corr(.5, n=120)
-ci.corr(.5, n=120, digits=2)
-```
+Miscellaneous R utilities developed by Rich Jones. This collection includes tools for effect size estimation, descriptive statistics, psychometric scoring, and general utility functions.
 
-# Dstar.R
-Get the optimal value for D to convert between logit and probit regression parameters. Solved as the 
-ratio of heights of probability density functions under normal and logistic at a specific value 
-for p (the probability of an indicated response). I suggest using the overall marginal value for p.
-In the example below, p is .3. This could mean that overall 30% of the sample make an error on 
-a test item, and one wants a value for $D$ to convert from probit to logit coefficients. 
+---
 
-```
-Dstar(.3)
-```
+### `ci.corr()`
+Computes the confidence interval for a correlation coefficient using Fisher's z-transformation.
 
+### `Dstar()`
+Computes the optimal scaling factor `D` for converting probit regression coefficients to logit equivalents, based on a specified probability.
 
-# ess.R 
-Determine the effective sample size given a clustered design. 
-Uses intra-cluster correlation (ICC), number of units (e.g. patients)
-and number of observations per unit (e.g., repeated observations). Also
-the code shows how to find minimum detectable correlation given
-effective sample size.
+### `es.neteffect()`
+Estimates the net effect of a treatment in the presence of confounding, using potential outcomes logic.
 
-Note, however, that the ess calculation only addresses non-independence of
-one variable for the correlation, so the minimum detectable correlation
-is anti-conservative.
+### `esi()`
+Main function to compute standardized effect size indices for mean differences, proportions, and correlations.
 
-# function_scoreit.r
-Defines a function scoreit that computes the sum of a set of indicators,
-uses predictive mean matching in the case of missing items, reports alpha
-and item-rest correlations. see function_itemrest.r
+### `esi.descriptor()`
+Returns a text description (e.g., "small", "medium") based on effect size magnitude.
 
-# function_itemrest.r
-Computes item-sum of remainder of variables in a data frame correlations.
-Used by scoreit funciton (see function_scoreit.r)
+### `esi.p()`
+Computes the p-value for a given effect size and standard error.
 
-# vDd.r
-Provides a verbal descriptor on the size of a standardized mean difference effect
-size. Loosely following
-what Cohen (1988; Statistical power analysis for the behavioral sciences. Hillsdale, 
-New Jersey: Lawrence Erlbaum Associates.) suggested.
-|r|descriptor|r|descriptor|
-|--|--|--|--|
-|<0.2|trivial|[0.2,0.25)|small|
-|[0.25,0.45)|small-to-medium|[0.45,0.55)|about a medium|
-|[0.55,0.75)|medium-to-large|[0.75,0.85)|about a large|
-|>=0.85|large|||
+### `esi.se()`
+Computes the standard error for a given effect size estimate.
 
-```
-d <- .3
-vDd(d)
-```
+### `ess()`
+Calculates effective sample size given ICC, number of clusters, and size per cluster.
 
-# vDR.r
-Provides a verbal descriptor on the size of a correlation coefficient. Loosely following
-what Cohen (1988; Statistical power analysis for the behavioral sciences. Hillsdale, 
-New Jersey: Lawrence Erlbaum Associates.) suggested.
-|r|descriptor|r|descriptor|
-|--|--|--|--|
-|<.1|trivial|[.1,.12)|small|
-|[.12,.28)|small-to-medium|[.28,.32)|about a medium|
-|[.32,.48)|medium-to-large|[.48,52)|about a large|
-|>=.52|large|||
+### `extractEigenvalues()`
+Extracts and returns eigenvalues from a matrix, with optional trimming of small values.
 
-```
-r <- .3
-vDR(r)
-```
+### `function_itemrest()`
+Computes item-rest correlations across variables in a data frame.
 
+### `function_scoreit()`
+Scores a set of items using sum or predictive mean matching; reports alpha and item-rest correlations.
 
+### `function_svalues()`
+Computes signed residuals ("s-values") for each item in a scale, based on deviation from the total score.
 
+### `hist_discrete()`
+Generates histograms for discrete (integer-valued) variables, with cleaner axis formatting.
+
+### `include()`
+Sources all `.r` or `.R` files in a given directory into the global environment.
+
+### `itemsummary()`
+Generates summary statistics for item-level variables in a test or scale (mean, sd, alpha-if-dropped, etc.).
+
+### `Lehr_repeated()`
+Computes sample size requirements for repeated-measures designs using Lehr’s formula.
+
+### `neff()`
+Computes effective sample size using design-based correction for survey weights.
+
+### `pooled.sd()`
+Computes pooled standard deviation across two groups.
+
+### `pvf()`
+Computes the probability of validation failure (i.e., probability that validation estimate is below a threshold given training effect).
+
+### `showme()`
+Prints variable names and labels for selected variables in a data frame.
+
+### `showme.section()`  
+Prints sections of variable metadata with headers and formatting (variant of `showme()`).
+
+### `showme.section.lines()`  
+Like `showme.section()` but controls number of lines printed per section.
+
+### `source_https()`
+Sources one or more `.R` scripts from HTTPS URLs, bypassing SSL verification if necessary.
+
+### `tab1()`
+One-way table summary with frequencies and proportions, for a labeled variable.
+
+### `tab2()`
+Two-way cross-tabulation using `gmodels::CrossTable()`, with labeled output and proportion options.
+
+### `ttesti()`
+Conducts a two-sample t-test based on summary statistics (mean, SD, n).
+
+### `varlablist()`
+Prints a variable-label table from a data frame. Adapts output format to console, HTML, LaTeX, or markdown.
+
+### `varnames()`
+Prints variable names from a data frame as a comma-separated string.
+
+### `vDd()`
+Returns a verbal descriptor (e.g., “small-to-medium”) based on a standardized mean difference value.
+
+### `vDR()`
+Returns a verbal descriptor based on the value of a correlation coefficient.
+
+### `ztesti()`
+Conducts a two-sample z-test based on summary statistics.
 
 

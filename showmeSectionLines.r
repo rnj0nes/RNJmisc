@@ -1,4 +1,5 @@
-showme.section.lines <- function(x, search_string = NULL , lines = 999) {
+
+showmeSectionLines <- function(x, search_string = NULL , lines = 999) {
    # Read the contents of the file
    file_contents <- readLines(x)
    
