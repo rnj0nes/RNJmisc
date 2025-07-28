@@ -1,0 +1,1 @@
+ttesti <- function(x,df) {  pv <- (1-pt(abs(x),df))*2  message(paste0("Two-tailed P-value with t(",n,") = " , sprintf("%6.4f", x))," is :")  pv}

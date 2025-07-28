@@ -1,0 +1,1 @@
+showme <- function(x) {    # Replace 'path/to/your/file.txt' with the path to your text file    file_path <- x        # Read the contents of the file    file_contents <- readLines(file_path)        # Print the contents to the console    cat(file_contents, sep = "\n")}

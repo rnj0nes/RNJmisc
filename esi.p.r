@@ -1,0 +1,1 @@
+# compute effect size from two propotions# esi.p esi.p <- function(p1,p2) {	h <- abs(2*asin(sqrt(p1))-2*asin(sqrt(p2)))	h}

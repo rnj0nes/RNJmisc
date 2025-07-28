@@ -1,0 +1,1 @@
+# verbal descriptors for Cohen's desi.descriptor <- function(d) {  d <- abs(d)  if (d<.2) {     descriptor <- "trivial"   }  if (d>=.2&d<.5) {     descriptor <- "small"  }  if (d>=.5&d<.8) {    descriptor <- "medium"     }  if (d>.8) {     descriptor <- "large"     }  descriptor}
