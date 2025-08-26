@@ -1,10 +1,6 @@
 RNJmisc
 =======
 
-Rich Jones' miscellaneous stuff
-
-# RNJmisc
-
 Miscellaneous R utilities developed by Rich Jones. This collection includes tools for effect size estimation, descriptive statistics, psychometric scoring, and general utility functions.
 
 ---
