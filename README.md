@@ -53,6 +53,9 @@ Computes pooled standard deviation across two groups.
 ### `pvf()`
 Formats P-values
 
+### `runmplus_load_savedata()`
+A vibe-coded translation of `runmplus_load_savedata.ado`. Works in limited testing as of 2025-09-03. Supply the name of the Mplus output file and Bob's your uncle.
+
 ### `scoreit()`
 Scores a set of items using sum or predictive mean matching; reports alpha and item-rest correlations.
 
