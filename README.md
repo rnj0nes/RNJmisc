@@ -19,97 +19,111 @@ devtools::install_github("rnj/RNJmisc")
 
 ---
 
-### `ci.corr()`
-Computes the confidence interval for a correlation coefficient using Fisher's z-transformation.
+### Statistical Tests & P-values
 
-### `Dstar()`
-Computes the optimal scaling factor `D` for converting probit regression coefficients to logit equivalents, based on a specified probability.
+**`ttesti()`**
+Calculate two-tailed p-value from a t-statistic and degrees of freedom.
 
-### `es.neteffect()`
-Estimates the net effect of a treatment in the presence of confounding, using potential outcomes logic.
+**`ztesti()`**
+Calculate two-tailed p-value from a z-statistic.
 
-### `esi.descriptor()`
-Returns a text description (e.g., "small", "medium") based on Cohen's d effect size magnitude.
+**`pvf()`**
+Format p-values for academic publication.
 
-### `esi.p()`
-Computes the p-value for a given effect size and standard error.
+### Effect Size Estimation
 
-### `esi.se()`
-Computes the standard error for a given effect size estimate.
+**`Dstar()`**
+Compute optimal conversion factor between logit and probit regression coefficients.
 
-### `ess()`
-Calculates effective sample size given ICC, number of clusters, and size per cluster.
+**`esiD()`**
+Compute Cohen's d (Hedge's g) effect size with 95% confidence interval.
 
-### `extractEigenvalues()`
-Extracts and returns eigenvalues from a matrix, with optional trimming of small values.
+**`esiDneteffect()`**
+Compute effect size for pre-post designs with control group.
 
-### `hist_discrete()`
-Generates histograms for discrete (integer-valued) variables, with cleaner axis formatting.
+**`esiDse()`**
+Compute Cohen's d effect size from standard error values.
 
-### `include()`
-Source and r file and replays log to console
+**`esiP()`**
+Compute Cohen's h effect size from two proportions.
 
-### `itemrest()`
-Computes item-rest correlations across variables in a data frame.
+**`vDd()`**
+Get verbal description of Cohen's d magnitude.
 
-### `itemsummary()`
-Frequency table of item resopnses 
+**`vDr()`**
+Get verbal description of correlation coefficient magnitude.
 
-### `Lehr_repeated()`
-Computes sample size requirements for repeated-measures designs using Lehr’s formula.
+**`rCI()`**
+Compute confidence interval for a Pearson correlation.
 
-### `neff()`
-Computes effective sample size using design-based correction for survey weights.
+### Sample Size & Design
 
-### `pooled.sd()`
-Computes pooled standard deviation across two groups.
+**`neff()`**
+Compute effective sample size (harmonic mean).
 
-### `pvf()`
-Formats P-values
+**`ess()`**
+Compute effective sample size and design effect for clustered data.
 
-### `runmplus_load_savedata()`
-A vibe-coded translation of `runmplus_load_savedata.ado`. Works in limited testing as of 2025-09-03. Supply the name of the Mplus output file and Bob's your uncle.
+**`pooledSD()`**
+Compute pooled standard deviation for two groups.
 
-### `scoreit()`
-Scores a set of items using sum or predictive mean matching; reports alpha and item-rest correlations.
+**`Lehr_repeated()`**
+Compute minimum detectable effect size for repeated measures.
 
-### `showme()`
-Replays a text file to the console (like Mplus output, for example)
+### Data Transformation & Scoring
 
-### `showme.section()`  
-Replays sections of a text file to the console (like Mplus output, for example)
+**`z1()`**
+Transform variables to (0,1) scale with flexible options. Generates transformation equations.
 
-### `showme.section.lines()`  
-Replays sections of a text file to the console (like Mplus output, for example)
+**`scoreit()`**
+Score multi-item scales with imputation; computes Cronbach's alpha.
 
-### `source_https()`
-Sources one or more `.R` scripts from HTTPS URLs, bypassing SSL verification if necessary.
+**`itemrest()`**
+Compute item-rest correlations for multi-item scales.
 
-### `svalues()`
-Extracts starting values from Mplus output 
+**`itemsummary()`**
+Create frequency table of item responses.
 
-### `tab1()`
-One-way table summary with frequencies and proportions, for a labeled variable.
+### Descriptive Tables
 
-### `tab2()`
-Two-way cross-tabulation using `gmodels::CrossTable()`, with labeled output and proportion options.
+**`tab1()`**
+Create one-way frequency table with flexible output formats.
 
-### `ttesti()`
-Conducts a two-sample t-test based on summary statistics (mean, SD, n).
+**`tab2()`**
+Create two-way cross-tabulation with flexible proportion options.
 
-### `varlablist()`
-Prints a variable-label table from a data frame. Adapts output format to console, HTML, LaTeX, or markdown.
+**`varlablist()`**
+Display variable names and labels as formatted table.
 
-### `varnames()`
-Prints variable names from a data frame as a comma-separated string.
+**`varnames()`**
+Print variable names as comma-separated string.
 
-### `vDd()`
-Returns a verbal descriptor (e.g., “small-to-medium”) based on a standardized mean difference value.
+### File Utilities
 
-### `vDR()`
-Returns a verbal descriptor based on the value of a correlation coefficient.
+**`include()`**
+Source R script and save commands and output to file.
 
-### `ztesti()`
-Conducts a two-sample z-test based on summary statistics.
+**`showme()`**
+Display contents of text file to console.
 
+**`showmeSection()`**
+Display section of text file from search string to blank lines.
 
+**`showmeSectionLines()`**
+Display specified number of lines from text file.
+
+**`source_https()`**
+Source R scripts from HTTPS URLs.
+
+**`svalues()`**
+Extract SVALUES from Mplus output files.
+
+**`extractEigenvalues()`**
+Extract eigenvalues from factor analysis output.
+
+**`runmplus_load_savedata()`**
+Utility for Mplus output (limited functionality).
+
+### Visualization
+
+**`hist_discrete()`**
