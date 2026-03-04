@@ -13,7 +13,8 @@
 #' @param silent If FALSE, print back-transformation formulas
 #'
 #' @return A data frame with the original variables and additional `_z1` variables
-#'   containing the transformed values. Attributes contain the scaling parameters.
+#'   containing the transformed values. Each `_z1` column has an "equation" attribute
+#'   containing the transformation equation used.
 #'
 #' @details
 #' The default method scales variables using:
@@ -23,11 +24,14 @@
 #'
 #' The altmethod uses a more complex approach involving regression on collapsed data.
 #'
+#' Access the transformation equation with `attr(result$var_z1, "equation")`
+#'
 #' @examples
 #' \dontrun{
 #' data <- data.frame(x = 1:10, y = seq(0, 100, length.out = 10))
 #' result <- z1(data, vars = c("x", "y"))
 #' head(result)
+#' attr(result$x_z1, "equation")  # View transformation equation
 #' }
 #'
 #' @export
@@ -63,6 +67,9 @@ z1 <- function(data, vars, method = "default", lambda = 2,
     
     x <- data[[var]]
     x_z1 <- NA_real_
+    equation <- ""  # Initialize equation string
+    foo <- NULL
+    hoo <- NULL
     
     if (method == "softmax") {
       # Softmax transformation
@@ -70,6 +77,9 @@ z1 <- function(data, vars, method = "default", lambda = 2,
       x_sd <- sd(x, na.rm = TRUE)
       
       x_z1 <- 1 / (1 + exp(-1 * (x - x_mean) / (lambda * x_sd / (2 * pi))))
+      equation <- paste0(paste0(var, "_z1"), " = 1 / (1 + exp(-1 * (", var, " - ", 
+                         format(x_mean, scientific = FALSE), ") / (", lambda, " * ", 
+                         format(x_sd, scientific = FALSE), " / (2 * pi))))")
       
     } else if (method == "altmethod") {
       # Alternative method using intermediate values
@@ -113,6 +123,7 @@ z1 <- function(data, vars, method = "default", lambda = 2,
           }
         }
       }
+      equation <- paste0(paste0(var, "_z1"), " = (transformed_", var, " - min) / (max - min)")
       
     } else {
       # Default method
@@ -129,21 +140,24 @@ z1 <- function(data, vars, method = "default", lambda = 2,
       
       x_z1 <- numerator / denominator
       
-      # Store scaling constants for back-transformation
-      scale_factor <- denominator[1]
-      offset <- (x_min - (a1 / (b * k)) * x_sd)
+      # Calculate foo and hoo for equation
+      foo <- (x_max - x_min + (a2 / (b * k)) * x_sd)
+      hoo <- (x_min - (a1 / (b * k)) * x_sd)
       
-      attr(x_z1, "scale_factor") <- denominator[1]
-      attr(x_z1, "offset") <- x_min - (a1 / (b * k)) * x_sd
+      equation <- paste0(paste0(var, "_z1"), " = (", var, " - ", 
+                         format(hoo, scientific = FALSE), ") / ", 
+                         format(foo, scientific = FALSE))
     }
     
-    # Apply further transformations
+    # Apply further transformations and update equation
     if (logit) {
       x_z1 <- log(x_z1 / (1 - x_z1))
+      equation <- paste0("logit(", equation, ") = log(", paste0(var, "_z1"), " / (1 - ", paste0(var, "_z1"), "))")
     }
     
     if (z) {
       x_z1 <- qnorm(x_z1)
+      equation <- paste0("qnorm(", equation, ") = qnorm(", paste0(var, "_z1"), ")")
     }
     
     # Print back-transformation notes if requested
@@ -159,19 +173,12 @@ z1 <- function(data, vars, method = "default", lambda = 2,
       foo <- (x_max - x_min + (a2 / (b * k)) * x_sd)
       hoo <- (x_min - (a1 / (b * k)) * x_sd)
       
-      cat("Back-transformation for", var, ":\n")
-      if (!logit && !z) {
-        cat(paste(var, "= ", paste0(var, "_z1"), " * ", format(foo, scientific = FALSE), 
-                  " + ", format(hoo, scientific = FALSE), "\n"))
-      } else if (logit) {
-        cat(paste(var, "= invlogit(", paste0(var, "_z1"), ") * ", format(foo, scientific = FALSE), 
-                  " + ", format(hoo, scientific = FALSE), "\n"))
-      } else if (z) {
-        cat(paste(var, "= pnorm(", paste0(var, "_z1"), ") * ", format(foo, scientific = FALSE), 
-                  " + ", format(hoo, scientific = FALSE), "\n"))
-      }
-      cat("\n")
+      cat("Equation for", var, ":\n")
+      cat(equation, "\n\n")
     }
+    
+    # Attach equation as attribute
+    attr(x_z1, "equation") <- equation
     
     # Add to result data frame
     result[[paste0(var, "_z1")]] <- x_z1
