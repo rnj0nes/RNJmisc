@@ -1,3 +1,20 @@
+#' Display Specific Number of File Lines
+#'
+#' Displays a specified number of lines from a text file starting from an optional search string.
+#'
+#' @param x Path to the text file
+#' @param search_string Optional string to search for as a starting point
+#' @param lines Number of lines to display (default 999)
+#'
+#' @details
+#' If search_string is provided, starts display from that line; otherwise starts from line 1.
+#'
+#' @examples
+#' \dontrun{
+#' showmeSectionLines("/path/to/file.txt", "START", lines = 10)
+#' }
+#'
+#' @export
 
 showmeSectionLines <- function(x, search_string = NULL , lines = 999) {
    # Read the contents of the file

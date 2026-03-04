@@ -1,4 +1,22 @@
-#- function for computing item-rest correlations
+#' Item-Rest Correlations
+#'
+#' Computes the correlation between each item and the sum of all other items
+#' (corrected for overlap) in a scale or survey instrument.
+#'
+#' @param data A data frame where all columns are numeric items
+#'
+#' @return A vector of item-rest correlations
+#'
+#' @details
+#' For each item, calculates the correlation with the sum of remaining items.
+#' Useful for assessing item homogeneity in multi-item scales.
+#'
+#' @examples
+#' \dontrun{
+#' itemrest(likert_scale_data)
+#' }
+#'
+#' @export
 itemrest <- function(data) {
    # Ensure data is a data frame
    if (!is.data.frame(data)) {

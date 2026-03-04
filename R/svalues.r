@@ -1,12 +1,22 @@
-# Rich Jones (rich_jones@brown.edu)
-# 2021-05-07
-#
-# svalues 
-#            a function to look in a specified file, ideally a Mplus
-#            output file, for that part of the output that specifies
-#            the results of having asked for SVALUES in the output
-#            and return the result as a list.
-
+#' Extract SVALUES from Mplus Output File
+#'
+#' Extracts the SVALUES section from an Mplus output file to retrieve starting values
+#' for model parameters.
+#'
+#' @param filename Path to the Mplus output file
+#'
+#' @return A character vector containing the model parameters with final estimate values
+#'
+#' @details
+#' Parses Mplus output to extract the section containing model commands with final
+#' estimates that can be used as starting values for subsequent analyses.
+#'
+#' @examples
+#' \dontrun{
+#' svalues_import <- svalues("mymodel.out")
+#' }
+#'
+#' @export
 svalues <- function(filename) {
    svalues <- read.table(filename,sep="?", header=FALSE)
    svalues$linenum <- as.numeric(rownames(svalues))

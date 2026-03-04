@@ -1,8 +1,21 @@
-# rCI function
-# Rich Jones (Rich_Jones@Brown.edu) 2021-04-04
-# --------------------------------------------------------------
-# shows confidence interval on a correlation using Fisher's z transformation
-
+#' Confidence Interval for Correlation Coefficient
+#'
+#' Computes confidence interval on a Pearson correlation using Fisher's z transformation.
+#'
+#' @param x Correlation coefficient (between -1 and 1)
+#' @param n Sample size
+#' @param alpha Significance level (default 0.05 for 95% CI)
+#' @param digits Number of decimal places to round to (default 3)
+#'
+#' @return A vector with lower and upper CI limits for the correlation
+#'
+#' @details
+#' Uses Fisher's z transformation for more accurate CIs, especially with small samples.
+#'
+#' @examples
+#' rCI(0.9, n = 120)  # Returns approximately (0.859, 0.929)
+#'
+#' @export
 rCI <- function(x, n, alpha = .05 , digits = 3) {
 
    ll <- tanh(atanh(x)+qnorm(alpha/2)*(1/sqrt(n-3)))

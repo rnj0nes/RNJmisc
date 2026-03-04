@@ -1,32 +1,26 @@
-# varlablist: Display variable names and labels as a table
-#
-# Description:
-#   varlablist() shows a table of variable names and their labels.
-#   It adapts to the output format automatically:
-#     - HTML: styled table with kableExtra
-#     - LaTeX or Word: markdown/LaTeX table with knitr::kable
-#     - Console or fallback: plain text with print()
-#   You can also force plain text output using `text_only = TRUE`.
-#
-# Packages used:
-#   - tibble       (builds the variable-label table)
-#   - purrr        (extracts label attributes)
-#   - dplyr        (filters selected variables)
-#   - knitr        (formats tables)
-#   - kableExtra   (styles HTML tables)
-#
-# Usage:
-#   varlablist(data, vars = NULL, caption = "Variables and labels", text_only = FALSE)
-#
-# Arguments:
-#   data      : A data frame with optional variable labels (e.g., from haven)
-#   vars      : Optional character vector of variable names to include
-#   caption   : Table caption (default = "Variables and labels")
-#   text_only : If TRUE, forces plain text output (default = FALSE)
-#
-# Examples:
-#   varlablist(mydata)
-#   varlablist(mydata, vars = c("age", "sex"), text_only = TRUE)
+#' Display Variable Names and Labels as a Table
+#'
+#' Shows a table of variable names and their labels with automatic format detection.
+#'
+#' @param data A data frame with optional variable labels (from haven package)
+#' @param vars Optional character vector of variable names to include
+#' @param caption Table caption (default "Variables and labels")
+#' @param text_only If TRUE, forces plain text output
+#'
+#' @return A formatted table of variable names and their labels
+#'
+#' @details
+#' Adapts output format automatically:
+#' - HTML: styled table with kableExtra
+#' - LaTeX/Word: formatted table with knitr::kable
+#' - Console: plain text
+#'
+#' @examples
+#' \dontrun{
+#' varlablist(mydata)
+#' }
+#'
+#' @export
 
 varlablist <- function(data, vars = NULL, caption = "Variables and labels", text_only = FALSE) {
   if (is.null(vars)) {

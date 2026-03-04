@@ -1,23 +1,26 @@
-# One-way frequency table
-# Rich Jones
-# 2025-08-26
-# ———————————————————
-# Usage:
-# ———————————————————
-# # ASCII output
-# tab1(source_data, timefr)                       
-#
-# Markdown output (use rmd, rmarkdown, markdown, in place of md)
-# tab1(source_data, timefr, style = "md")         #
-# Works with 1-col data frame or vector too
-#source_data |>
-#  dplyr::select(timefr) |>
-#  tab1(style = "rmarkdown")
-#
-# More digits
-# tab1(source_data$timefr, style = "md", digits = 2)
-#
-# ———————————————————
+#' One-Way Frequency Table
+#'
+#' Creates a one-way frequency table for a variable with flexible output formats.
+#'
+#' @param data A data frame or vector
+#' @param var The variable to tabulate (optional if data is a single-column data frame)
+#' @param digits Number of decimal places for proportions (default 1)
+#' @param show_na Whether to include missing values (default TRUE)
+#' @param style Output format: "ascii" (default), "md", "markdown", "rmarkdown", or "rmd"
+#' @param headings Whether to include column headings
+#'
+#' @return A formatted frequency table
+#'
+#' @examples
+#' \dontrun{
+#' # ASCII output
+#' tab1(mtcars, hp)
+#'
+#' # Markdown output
+#' tab1(mtcars, hp, style = "md")
+#' }
+#'
+#' @export
 tab1 <- function(data, var = NULL, digits = 1, show_na = TRUE,
                  style = c("ascii","md","markdown","rmarkdown","rmd"),
                  headings = FALSE) {

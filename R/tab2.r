@@ -1,39 +1,25 @@
-# tab2: Labeled 2-Way Table with Flexible Proportions
-#
-# Description:
-#   tab2() produces a labeled 2-way cross-tabulation using gmodels::CrossTable() 
-#   with flexible options for displaying proportions. It supports labeled variables 
-#   (from haven), preserves variable names, handles missing values explicitly,
-#   and provides optional labeling in the output.
-#
-# Packages used:
-#   - dplyr       (for data manipulation and pulling variables)
-#   - rlang       (for tidy evaluation with quosures)
-#   - stringr     (for formatting variable names)
-#   - haven       (for handling variable labels)
-#   - gmodels     (for CrossTable function)
-#
-# Usage:
-#   tab2(data, row_var, col_var, prop_option = "t")
-#
-# Arguments:
-#   data        : A data frame containing the variables.
-#   row_var     : The variable to display as rows (unquoted).
-#   col_var     : The variable to display as columns (unquoted).
-#   prop_option : A string indicating which proportions to show:
-#                   - "t"    : total proportions (default)
-#                   - "r"    : row proportions (in Row Total column)
-#                   - "c"    : column proportions (in Column Total row)
-#                   - "cell" : proportions of total per cell
-#
-# Output:
-#   Prints a formatted 2-way table with optional variable labels and 
-#   selected proportion display. Missing values are displayed as "NA".
-#
-# Example (with native pipe):
-#   data <- haven::zap_labels(haven::read_dta("myfile.dta"))
-#   data |> tab2(gender, diagnosis, prop_option = "r")
-
+#' Two-Way Cross-Tabulation with Flexible Proportions
+#'
+#' Produces a labeled 2-way cross-tabulation with flexible options for
+#' displaying proportions. Supports labeled variables from haven package.
+#'
+#' @param data A data frame containing the variables
+#' @param row_var The variable to display as rows (unquoted)
+#' @param col_var The variable to display as columns (unquoted)
+#' @param prop_option Proportions to show: "t" (total), "r" (row), "c" (column), "cell"
+#'
+#' @return Prints a formatted 2-way table
+#'
+#' @details
+#' Uses gmodels::CrossTable for tabulation. Handles missing values explicitly
+#' and preserves variable labels and names when available.
+#'
+#' @examples
+#' \dontrun{
+#' tab2(mtcars, as.factor(cyl), as.factor(gear))
+#' }
+#'
+#' @export
 tab2 <- function(data, row_var, col_var, prop_option = "t") {
   row_var_quo <- rlang::enquo(row_var)
   col_var_quo <- rlang::enquo(col_var)

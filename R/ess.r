@@ -1,17 +1,26 @@
-# Clustered samples and Effective Sample Size
-#
-# van Breukelen, G. J., & Candel, M. J. (2012). 
-# Calculating sample sizes for cluster randomized trials:
-# we can keep it simple and efficient! 
-# Journal of Clinical Epidemiology, 65(11), 1212-1218. 
-#
-# The factor ((m-1)*r + 1) ... is known as the 
-# design effect (DE). Dividing the total sample size 
-# m*k by the DE gives the effective sample size, 
-# that is, the sample size needed for individual 
-# randomization to have the same power and precision
-# as the cluster randomized trial. 
-
+#' Effective Sample Size for Clustered Data
+#'
+#' Calculates the design effect and effective sample size for clustered data
+#' (e.g., repeated measurements on subjects).
+#'
+#' @param m Number of observations per cluster
+#' @param k Number of clusters
+#' @param r Intra-cluster correlation coefficient (ICC)
+#'
+#' @return A vector with two elements: design effect and effective sample size
+#'
+#' @details
+#' Design effect = (m-1)*r + 1
+#' When dividing total sample size by the design effect, you get the effective
+#' sample size that would be needed for simple random sampling to achieve the
+#' same power and precision as the clustered design.
+#'
+#' References: van Breukelen & Candel (2012). Journal of Clinical Epidemiology.
+#'
+#' @examples
+#' ess(25, 4, 0.017)  # 25 obs per cluster, 4 clusters, ICC = 0.017
+#'
+#' @export
 ess <- function(m,k,r) {
   # m is number of observations per cluster (i.e., 
   #    repeated observations on a patient)

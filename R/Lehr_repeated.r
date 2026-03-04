@@ -1,13 +1,23 @@
-# lehr_repeated.r
-# Rich Jones
-# 2019-09-26
-# lehr_repeated is a function that computes the minimum 
-# detectable effect size in Cohen's d metric assuming
-# a two-group design with equal sample sizes (n) and
-# a repeated measures design (m repeated measures) and
-# a auto-correlation of the outcome (r) under the
-# assumption that 80% power and a type-I error level are
-# desired.
+#' Minimum Detectable Effect Size for Repeated Measures Design
+#'
+#' Computes the minimum detectable effect size (Cohen's d) for a two-group
+#' repeated measures design with specified power and significance level.
+#'
+#' @param n Sample size per group
+#' @param m Number of repeated measures (including baseline)
+#' @param r Autocorrelation of the outcome across time
+#'
+#' @return The minimum detectable effect size in Cohen's d metric
+#'
+#' @details
+#' Assumes 80% power and alpha = 0.05 (two-tailed).
+#' Uses Lehr's formula: d = (4*sqrt((m-1)*r+1))/(sqrt(m)*sqrt(n))
+#'
+#' @examples
+#' lehr_repeated(64, 1, 0)    # Returns ~0.5
+#' lehr_repeated(40, 4, 0.7)  # Returns ~0.557
+#'
+#' @export
 lehr_repeated <- function(n,m,r) {
   # n per group sample size
   # m number of repeated observations (including the first)

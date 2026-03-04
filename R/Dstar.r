@@ -1,19 +1,23 @@
-# Dstar function
-# Rich Jones (Rich_Jones@Brown.edu) 2021-04-04
-# --------------------------------------------------------------
-# finds the optimal conversion factor between logit and probit
-# scaled regression coefficients (D) as the ratio of the 
-# normal density and logistic density corresponding to the 
-# marginal value of the proportion with the indicated response
-# (e.g., proportion making an error)
-#
-# Dstar is the conversion factor for moving between
-# logit and probit parameters (sometimes people use
-# pi/sqrt(3), sometimes 1.7, sometimes 1.6, here's an
-# exact value determined by marginal proportion of
-# the grouping variable (proportion with outcome,
-# proportion with indicated response on test item)
-
+#' Conversion Factor Between Logit and Probit Scales
+#'
+#' Finds the optimal conversion factor (D*) between logit and probit scaled
+#' regression coefficients as the ratio of the normal and logistic density.
+#'
+#' @param x A proportion (between 0 and 1) for which to compute D*
+#'
+#' @return The D* conversion factor for the given proportion
+#'
+#' @details
+#' The D* factor is used to convert between logit and probit regression coefficients.
+#' It is determined by the marginal proportion of the grouping variable (e.g.,
+#' proportion making an error). Common approximations use pi/sqrt(3), 1.7, or 1.6,
+#' but this function provides the exact value.
+#'
+#' @examples
+#' Dstar(0.5)  # Returns approximately 1.596
+#' Dstar(0.05) # Returns approximately 2.171
+#'
+#' @export
 Dstar <- function(x){
 
   # logit function

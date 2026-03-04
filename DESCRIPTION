@@ -9,4 +9,4 @@ Description: A collection of miscellaneous R utilities including tools for effec
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.3

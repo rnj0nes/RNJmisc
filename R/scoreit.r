@@ -1,9 +1,28 @@
-#- Start scoreit Function
-library(dplyr)
-library(mice)
-library(psych)
-
+#' Score Multi-Item Scale with Imputation
+#'
+#' Scores a multi-item scale by imputing missing values and computing a composite score.
+#'
+#' @param data A data frame containing the items
+#' @param var_names Character vector of column names to include in the score
+#' @param new_var_name Name for the new scored variable
+#' @param min_items Minimum number of non-missing items required for scoring
+#'
+#' @return Data frame with new scored column and reliability information in attributes
+#'
+#' @details
+#' Uses mice imputation (predictive mean matching) to handle missing values,
+#' then computes the sum score. Returns Cronbach's alpha as a measure of reliability.
+#'
+#' @examples
+#' \dontrun{
+#' scored_df <- scoreit(likert_data, c("q1", "q2", "q3"), "score", min_items = 2)
+#' }
+#'
+#' @export
 scoreit <- function(data, var_names, new_var_name, min_items) {
+   library(dplyr)
+   library(mice)
+   library(psych)
    # Ensure that var_names is a character vector
    var_names <- as.character(var_names)
    
