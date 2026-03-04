@@ -1,0 +1,12 @@
+Package: RNJmisc
+Title: Miscellaneous R Utilities
+Version: 0.1.0
+Authors@R: 
+    person("Rich", "Jones", email = "rich@example.com", role = c("aut", "cre"))
+Description: A collection of miscellaneous R utilities including tools for effect 
+    size estimation, descriptive statistics, psychometric scoring, and general 
+    utility functions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

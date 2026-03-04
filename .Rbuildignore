@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^\.DS_Store$
+^RNJmisc\.Rproj$
+^all_functions_combined\.R$
+^contents\.r$
+^deleteme\.R$

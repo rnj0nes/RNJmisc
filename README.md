@@ -3,6 +3,20 @@ RNJmisc
 
 Miscellaneous R utilities developed by Rich Jones. This collection includes tools for effect size estimation, descriptive statistics, psychometric scoring, and general utility functions.
 
+## Installation
+
+You can install RNJmisc directly from GitHub using `devtools`:
+
+```r
+# Install devtools if you haven't already
+install.packages("devtools")
+
+# Install RNJmisc from GitHub
+devtools::install_github("rnj/RNJmisc")
+```
+
+## Functions
+
 ---
 
 ### `ci.corr()`
