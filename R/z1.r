@@ -190,11 +190,11 @@ z1 <- function(data, vars, method = "default", lambda = 2,
       cat(equation, "\n\n")
     }
     
-    # Attach equation as attribute
-    attr(x_z1, "equation") <- equation
-    
     # Add to result data frame
     result[[paste0(var, "_z1")]] <- x_z1
+    
+    # Attach equation as attribute AFTER assigning to data frame
+    attr(result[[paste0(var, "_z1")]], "equation") <- equation
   }
   
   return(result)
