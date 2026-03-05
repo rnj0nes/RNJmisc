@@ -35,7 +35,8 @@ transformed variable is expected to be linear. Default is 2.}
 }
 \value{
 A data frame with the original variables and additional \verb{_z1} variables
-containing the transformed values. Attributes contain the scaling parameters.
+containing the transformed values. Each \verb{_z1} column has an "equation" attribute
+containing the transformation equation used.
 }
 \description{
 Transforms variables to a (0,1) scale with optional further transformations.
@@ -47,12 +48,28 @@ The default method scales variables using:
 The softmax method uses a sigmoid transformation based on the mean and standard deviation.
 
 The altmethod uses a more complex approach involving regression on collapsed data.
+
+Access the transformation equation with \code{attr(result$var_z1, "equation")}
 }
 \examples{
-\dontrun{
-data <- data.frame(x = 1:10, y = seq(0, 100, length.out = 10))
-result <- z1(data, vars = c("x", "y"))
-head(result)
-}
+# Using mtcars dataset - normalize mpg to (0,1) scale
+result <- z1(mtcars, vars = "mpg")
+
+# View the first few rows with original and transformed variables
+head(result[, c("mpg", "mpg_z1")])
+
+# Access the transformation equation
+attr(result$mpg_z1, "equation")
+
+# Example with multiple variables
+result <- z1(mtcars, vars = c("mpg", "hp", "wt"))
+
+# Each variable has its own equation stored as an attribute
+cat("Transformation equation for mpg:\n")
+cat(attr(result$mpg_z1, "equation"), "\n\n")
+cat("Transformation equation for hp:\n")
+cat(attr(result$hp_z1, "equation"), "\n\n")
+cat("Transformation equation for wt:\n")
+cat(attr(result$wt_z1, "equation"), "\n")
 
 }

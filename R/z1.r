@@ -27,12 +27,25 @@
 #' Access the transformation equation with `attr(result$var_z1, "equation")`
 #'
 #' @examples
-#' \dontrun{
-#' data <- data.frame(x = 1:10, y = seq(0, 100, length.out = 10))
-#' result <- z1(data, vars = c("x", "y"))
-#' head(result)
-#' attr(result$x_z1, "equation")  # View transformation equation
-#' }
+#' # Using mtcars dataset - normalize mpg to (0,1) scale
+#' result <- z1(mtcars, vars = "mpg")
+#' 
+#' # View the first few rows with original and transformed variables
+#' head(result[, c("mpg", "mpg_z1")])
+#' 
+#' # Access the transformation equation
+#' attr(result$mpg_z1, "equation")
+#' 
+#' # Example with multiple variables
+#' result <- z1(mtcars, vars = c("mpg", "hp", "wt"))
+#' 
+#' # Each variable has its own equation stored as an attribute
+#' cat("Transformation equation for mpg:\n")
+#' cat(attr(result$mpg_z1, "equation"), "\n\n")
+#' cat("Transformation equation for hp:\n")
+#' cat(attr(result$hp_z1, "equation"), "\n\n")
+#' cat("Transformation equation for wt:\n")
+#' cat(attr(result$wt_z1, "equation"), "\n")
 #'
 #' @export
 z1 <- function(data, vars, method = "default", lambda = 2, 
